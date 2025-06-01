@@ -92,13 +92,18 @@ a = -1;
 b = 1;
 % Definizione diretta dei nodi di Chebyshev
 k = 1:n;
+% funzione per calcolare i nodi di Chebyshev
 x = (a+b)/2 + (b-a)/2*cos((2*k-1)*pi/(2*n));
+
+% Funzione di Runge
 f = @(x) 1./(1+25*x.^2);
 y = f(x);
+% Interpolazione polinomiale di Lagrange
+% con polyfit e polyval
 p = polyfit(x, y, n-1);
-
 z = linspace(a, b, 100)';
 w = polyval(p, z);
+
 plot(x, y, 'o', z, w)
 hold on
 plot(z, w, 'r-')
