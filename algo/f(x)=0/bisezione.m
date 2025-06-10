@@ -8,7 +8,9 @@ for i = 1:max_iter
     pmedio = (a + b) / 2;
     % calcolo il valore della funzione in pmedio
     fpmedio = f(pmedio);
-    if abs(fpmedio) < delta
+    % if abs(fpmedio) < delta
+    if abs(b-a)/max(abs(a), abs(b)) < delta
+
         radice = pmedio;
         printRadice(radice, i);
         return
@@ -20,7 +22,8 @@ for i = 1:max_iter
     else
         a = pmedio;
     end
-    if abs(b - a) < delta
+    % if abs(b - a) < delta
+    if abs(b-a)/max(abs(a), abs(b)) < delta
         radice = (a + b) / 2;
         printRadice(radice, i);
         return
